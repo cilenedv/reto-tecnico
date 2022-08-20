@@ -1,0 +1,103 @@
+$black-title-color: #1A202C;
+$black-light-color:#2D3748;
+$primary-color:#7C3AED;
+$medium: 769px;
+$small: 639px;
+
+.content-login{
+    height: 100vh;
+    padding: 0 !important;
+    margin: 0;
+    overflow: hidden;
+}
+.content-login {
+    mat-grid-tile{
+        height: -webkit-fill-available;
+        @media (max-width: $small) {
+            width: 100% !important;
+        }
+    }
+
+}
+.content-login {
+    mat-grid-tile{
+       img{
+            height: 100%;
+            width: 100%;
+       }
+    }
+}
+mat-form-field {
+    max-width: 359px;
+    width: 359px;
+    margin-top: 16px;
+    @media (max-width: $medium) {
+        width: 284px;
+        max-width: 284px;
+    }
+}
+mat-grid-list{
+    mat-grid-tile{
+        p:nth-child(1){
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 19px;
+            color: $black-light-color;
+            margin-bottom: 0;
+        }
+        p:nth-child(2){
+            font-style: normal;
+            font-weight: 700;
+            font-size: 30px;
+            line-height: 35px;
+            color: $black-title-color;
+            margin-bottom: 0;
+        }
+        .form{
+            p{
+                font-style: normal;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 16px;
+                color: #2C5282;
+                text-align: right;
+            }
+            .group-button{
+                button{
+                    width: 347px;
+                    height: 50px;
+                    margin-top: 16px;
+                    font-weight: 500;
+                    font-size: 16px;
+                    line-height: 19px;
+                    @media (max-width: $medium) {
+                        width: 284px;
+                        height: 48px;
+                    }
+                }
+                div:nth-child(1){
+                    button{
+                        background-color: $primary-color;
+                    }
+                }
+                div:nth-child(2){
+                  button{
+                        background-color: $black-light-color;
+                        img{
+                            width: auto;
+                            height: auto;
+                            margin: 0 6px 3px 0;
+                        }
+                  }
+                }
+
+            }
+            .checkbox-button{
+                margin: 20px 0 40px 0;
+            }
+
+        }
+    }
+}
+

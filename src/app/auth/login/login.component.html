@@ -1,45 +1,62 @@
+<mat-grid-list cols="2" class="content-login">
+    <mat-grid-tile *ngIf="!mostrar">
+        <img src="../../../assets/img/nature-login.png"/>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <div>
+            <p>Bienvenido</p>
+            <p>Inicia sesión</p>
+            <form class="form" (ngSubmit)="login(formLogin)"
+                  #formLogin ="ngForm">
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Correo electrónico</mat-label>
+                        <input matInput
+                            placeholder=""
+                            type="email"
+                            name="email"
+                            required
+                            email
+                            [(ngModel)]="usuario.email">
+                        <mat-error >
+                            El correo es obligatorio
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Contraseña</mat-label>
+                        <input matInput [type]="hide ? 'password' : 'text'"
+                            name="password"
+                            required
+                            minlength="6"
+                            [(ngModel)]="usuario.password">
+                        <mat-error>
+                            La contraseña debe de ser más de 6 letras
+                        </mat-error>
 
-<div class="example-container">
-    <p>Bienvenido</p>
-    <p>Inicia sesión</p>
-    <form (ngSubmit)="login(formLogin)"
-          #formLogin ="ngForm">
-        <div>
-            <mat-form-field appearance="outline">
-                <mat-label>Correo electrónico</mat-label>
-                <input matInput
-                    placeholder=""
-                    type="email"
-                    name="email"
-                    required
-                    email
-                    [(ngModel)]="usuario.email">
-                <mat-error >
-                    El correo es obligatorio
-                </mat-error>
-            </mat-form-field>
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                    </mat-form-field>
+                    <p>¿Olvidaste tu contraseña?</p>
+                </div>
+                <div class="checkbox-button">
+                    <mat-checkbox>Recordar correo</mat-checkbox>
+                </div>
+                <div class="group-button">
+                    <div>
+                        <button mat-raised-button color="primary" type="submit">Ingresar</button>
+                    </div>
+                    <div>
+                        <button mat-raised-button color="primary" >
+                            <img src="../../../assets/img/icon-google.png" alt="">
+                            Ingresar  con google
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
-        <div>
-            <mat-form-field appearance="outline">
-                <mat-label>Contraseña</mat-label>
-                <input matInput [type]="hide ? 'password' : 'text'"
-                    name="password"
-                    required
-                    minlength="6"
-                    [(ngModel)]="usuario.password">
-                <mat-error>
-                    La contraseña debe de ser más de 6 letras
-                </mat-error>
-                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </button>
-            </mat-form-field>
-        </div>
-        <div class="example-section">
-            <mat-checkbox>Recordar correo</mat-checkbox>
-        </div>
-        <div>
-            <button mat-raised-button color="primary"  type="submit">Ingresar</button>
-        </div>
-    </form>
-  </div>
+    </mat-grid-tile>
+</mat-grid-list>
+
