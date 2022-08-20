@@ -35,6 +35,10 @@ mat-form-field {
         width: 284px;
         max-width: 284px;
     }
+    @media (max-width: $small) {
+        width: 342px;
+        max-width: 342px;
+    }
 }
 mat-grid-list{
     mat-grid-tile{
@@ -73,6 +77,10 @@ mat-grid-list{
                     line-height: 19px;
                     @media (max-width: $medium) {
                         width: 284px;
+                        height: 48px;
+                    }
+                    @media (max-width: $small) {
+                        width: 342px;
                         height: 48px;
                     }
                 }

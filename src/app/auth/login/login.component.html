@@ -42,7 +42,9 @@
                     <p>¿Olvidaste tu contraseña?</p>
                 </div>
                 <div class="checkbox-button">
-                    <mat-checkbox>Recordar correo</mat-checkbox>
+                    <mat-checkbox  [(ngModel)]= "recordar" name="remenber">
+                        Recordar correo
+                    </mat-checkbox>
                 </div>
                 <div class="group-button">
                     <div>
