@@ -1,0 +1,45 @@
+
+<div class="example-container">
+    <p>Bienvenido</p>
+    <p>Inicia sesión</p>
+    <form (ngSubmit)="login(formLogin)"
+          #formLogin ="ngForm">
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>Correo electrónico</mat-label>
+                <input matInput
+                    placeholder=""
+                    type="email"
+                    name="email"
+                    required
+                    email
+                    [(ngModel)]="usuario.email">
+                <mat-error >
+                    El correo es obligatorio
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>Contraseña</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'"
+                    name="password"
+                    required
+                    minlength="6"
+                    [(ngModel)]="usuario.password">
+                <mat-error>
+                    La contraseña debe de ser más de 6 letras
+                </mat-error>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+        <div class="example-section">
+            <mat-checkbox>Recordar correo</mat-checkbox>
+        </div>
+        <div>
+            <button mat-raised-button color="primary"  type="submit">Ingresar</button>
+        </div>
+    </form>
+  </div>
