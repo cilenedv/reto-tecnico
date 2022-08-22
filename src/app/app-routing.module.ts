@@ -7,7 +7,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { UsersComponent } from './pages/users/users.component';
 
 const routes: Routes = [
-    { path: 'users', component: UsersComponent, canActivate: [ AuthGuard, AuthGoogleGuard] },
+    { path: 'users', component: UsersComponent, canActivate: [ AuthGuard] },
 
     { path: 'dashboard', component: DashboardComponent },
     { path: 'login', component: LoginComponent },
