@@ -1,21 +1,30 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
-import { UsuarioModel } from '../models/usuario.model';
-import { GoogleAuthProvider } from 'firebase/auth';
+import { UserLoginModel } from '../models/userLogin.model';
+import { Auth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Router } from '@angular/router';
+
 
 @Injectable({
     providedIn: 'root',
 })
 export class AuthService {
-    constructor(private http: HttpClient, public afAuth: AngularFireAuth) {}
 
     private url = 'https://identitytoolkit.googleapis.com/v1';
     private apikey = 'AIzaSyB-DGM5wYEalXWuBUQsiqZcMq_Op04hJN4';
     userToken: string;
+    public loginGoogle: any = {};
 
-    login(usuario: UsuarioModel) {
+    constructor(private http: HttpClient,
+                private router: Router,
+                public afAuth: AngularFireAuth){
+
+                }
+
+
+    login(usuario: UserLoginModel) {
         const authData = {
             email: usuario.email,
             password: usuario.password,
@@ -59,6 +68,8 @@ export class AuthService {
     // Sign in with Google
     GoogleAuth() {
         return this.AuthLogin(new GoogleAuthProvider());
+
+
     }
     // Auth logic to run auth providers
     AuthLogin(provider) {
@@ -67,9 +78,12 @@ export class AuthService {
             .then((result) => {
                 console.log('You have been successfully logged in!');
                 console.log(result);
+                this.router.navigate(['/users']);
             })
             .catch((error) => {
                 console.log(error);
             });
     }
+
 }
+

@@ -11,14 +11,6 @@ export class UsersService {
   constructor( private http: HttpClient ) { }
 
   private url = 'https://jsonplaceholder.typicode.com/users';
-  private _users: BehaviorSubject< null > = new BehaviorSubject(
-    null
-);
-get getUsers$(): Observable<any[]> {
-    return this._users.asObservable();
-}
-
-
 
   getUsers(){
     return this.http.get(this.url).pipe(

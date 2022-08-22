@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
+import { AuthGoogleGuard } from './guards/auth-google.guard';
 import { AuthGuard } from './guards/auth.guard';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { UsersComponent } from './pages/users/users.component';
 
 const routes: Routes = [
-    { path: 'users', component: UsersComponent, canActivate: [ AuthGuard ] },
+    { path: 'users', component: UsersComponent, canActivate: [ AuthGuard, AuthGoogleGuard] },
 
     { path: 'dashboard', component: DashboardComponent },
     { path: 'login', component: LoginComponent },

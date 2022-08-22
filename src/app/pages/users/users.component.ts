@@ -46,7 +46,7 @@ export class UsersComponent implements OnInit {
             console.log(resp);
         });
     }
-    // 900000 15minutos
+
     salir() {
         setTimeout(() => {
             this.auth.logout();

@@ -1,8 +1,10 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/service/auth.service';
-import { UsuarioModel } from '../../models/usuario.model';
+import { UserLoginModel } from '../../models/userLogin.model';
 
 
 @Component({
@@ -13,15 +15,18 @@ import { UsuarioModel } from '../../models/usuario.model';
 export class LoginComponent implements OnInit {
 
   hide = true;
-  usuario: UsuarioModel = new UsuarioModel();
+  usuario: UserLoginModel = new UserLoginModel();
   screenWidth: number;
   mostrar: boolean;
   recordar = false;
+  public loginButtonGoogle: any = {};
+  public subscriber: Subscription;
 
 
   constructor( private auth: AuthService,
                public router: Router,
-               public authService: AuthService ) {
+               public authService: AuthService,
+               public afAuth: AngularFireAuth ) {
     this.getScreenSize();
     if( localStorage.getItem('email') ){
         this.usuario.email = localStorage.getItem('email');
@@ -29,6 +34,7 @@ export class LoginComponent implements OnInit {
     }else{
         this.recordar = false;
     }
+
    }
 
 
@@ -63,5 +69,7 @@ export class LoginComponent implements OnInit {
        console.log(err.error.error.message);
     });
   }
+
+
 
 }
