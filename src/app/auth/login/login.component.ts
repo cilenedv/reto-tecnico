@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
 import { UsuarioModel } from '../../models/usuario.model';
 
+
 @Component({
   selector: 'gp-login',
   templateUrl: './login.component.html',
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
 
 
   constructor( private auth: AuthService,
-               public router: Router ) {
+               public router: Router,
+               public authService: AuthService ) {
     this.getScreenSize();
     if( localStorage.getItem('email') ){
         this.usuario.email = localStorage.getItem('email');
